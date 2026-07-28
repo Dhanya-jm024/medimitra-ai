@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Play, Pause, RotateCcw, Download, Volume2, Mic, ShieldAlert, Sparkles, CheckCircle, Hospital, MapPin, Globe } from "lucide-react";
+import { Play, Pause, RotateCcw, Volume2, Mic, Sparkles, MapPin, Sliders, Check } from "lucide-react";
 
 interface Scene {
   id: number;
@@ -9,7 +9,6 @@ interface Scene {
   title: string;
   subtitle: string;
   narration: string;
-  hindiVoiceSnippet?: string;
   badge: string;
   bgColor: string;
 }
@@ -48,7 +47,6 @@ const scenes: Scene[] = [
     title: "Live Demo: Multilingual Voice Triage",
     subtitle: "User speaks in Hindi: 'मुझे 2 दिनों से तेज बुखार और सिरदर्द है'. Gemini 2.0 returns 93% triage confidence with voice readout.",
     narration: "Watch this. A user in rural Mandya doesn't need to read English. They simply tap one button and speak in their native dialect: मुझे 2 दिनों से तेज बुखार और सिरदर्द है. In under 2 seconds, Google Gemini 2.0 analyzes symptoms, calculates a 93 percent confidence, prescribes safe home care, and reads the diagnosis out loud in Hindi!",
-    hindiVoiceSnippet: "मुझे 2 दिनों से तेज बुखार और सिरदर्द है।",
     badge: "VOICE STT & TTS IN 10+ INDIC LANGUAGES",
     bgColor: "from-slate-900 via-teal-950 to-slate-900",
   },
@@ -94,19 +92,44 @@ export default function DemoVideoPage() {
   const [currentSceneIdx, setCurrentSceneIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const [isRecording, setIsRecording] = useState(false);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const recordedChunksRef = useRef<Blob[]>([]);
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoiceIndex, setSelectedVoiceIndex] = useState<number>(0);
+  const [speechRate, setSpeechRate] = useState<number>(1.0);
+  const [speechPitch, setSpeechPitch] = useState<number>(1.0);
+  const [showVoiceSettings, setShowVoiceSettings] = useState(false);
 
   const activeScene = scenes[currentSceneIdx];
+
+  // Load available system/browser voices
+  useEffect(() => {
+    const updateVoices = () => {
+      if ("speechSynthesis" in window) {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length > 0) {
+          setAvailableVoices(voices);
+          // Prefer English/Natural voices by default
+          const defaultIdx = voices.findIndex(v => v.lang.includes("en") || v.name.includes("Google") || v.name.includes("Natural"));
+          if (defaultIdx !== -1) setSelectedVoiceIndex(defaultIdx);
+        }
+      }
+    };
+
+    updateVoices();
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = updateVoices;
+    }
+  }, []);
 
   // AI Speech Synthesis Narration
   const speakNarration = (text: string) => {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
+      if (availableVoices.length > 0 && availableVoices[selectedVoiceIndex]) {
+        utterance.voice = availableVoices[selectedVoiceIndex];
+      }
+      utterance.rate = speechRate;
+      utterance.pitch = speechPitch;
       window.speechSynthesis.speak(utterance);
     }
   };
@@ -133,7 +156,7 @@ export default function DemoVideoPage() {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, currentSceneIdx, activeScene]);
+  }, [isPlaying, currentSceneIdx, activeScene, selectedVoiceIndex, speechRate, speechPitch]);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -164,14 +187,22 @@ export default function DemoVideoPage() {
             <h1 className="text-lg font-black tracking-wide flex items-center gap-2">
               <span>MediMitra AI Pitch Video Presenter</span>
               <span className="px-2 py-0.5 bg-red-600 text-white text-[10px] font-black rounded-full uppercase tracking-wider">
-                Live 2-Min Presentation
+                Live 2-Min Studio
               </span>
             </h1>
-            <p className="text-xs text-slate-400">Automated AI Speech Voiceover & Timed Scene Walkthrough</p>
+            <p className="text-xs text-slate-400">Select Voice, Adjust Speed & Pitch, Play Presentation</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={() => setShowVoiceSettings(!showVoiceSettings)}
+            className="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl flex items-center gap-2 border border-slate-700"
+          >
+            <Sliders className="w-4 h-4 text-emerald-400" />
+            <span>Voice Controls</span>
+          </button>
+
           {!isPlaying ? (
             <button
               onClick={handlePlay}
@@ -186,7 +217,7 @@ export default function DemoVideoPage() {
               className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl flex items-center gap-2 shadow-lg transition-transform active:scale-95"
             >
               <Pause className="w-4 h-4 fill-current" />
-              <span>Pause AI Presentation</span>
+              <span>Pause Presentation</span>
             </button>
           )}
 
@@ -199,6 +230,77 @@ export default function DemoVideoPage() {
           </button>
         </div>
       </div>
+
+      {/* Voice Customization Settings Drawer */}
+      {showVoiceSettings && (
+        <div className="max-w-6xl mx-auto w-full my-3 p-4 bg-slate-900 rounded-2xl border border-emerald-500/40 shadow-xl space-y-4 animate-fadeIn">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <h3 className="text-xs font-black uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <Volume2 className="w-4 h-4" />
+              <span>AI Speech Synthesizer Voice Customizer</span>
+            </h3>
+            <button
+              onClick={() => speakNarration("Testing your selected AI voice setup for MediMitra AI presentation.")}
+              className="px-3 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold text-[11px] rounded-lg border border-emerald-500/30 flex items-center gap-1.5"
+            >
+              <Volume2 className="w-3.5 h-3.5" />
+              <span>Test Voice Audio</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            {/* Voice Dropdown */}
+            <div className="space-y-1">
+              <label className="font-bold text-slate-300 block">Select AI Voice Model:</label>
+              <select
+                value={selectedVoiceIndex}
+                onChange={(e) => setSelectedVoiceIndex(Number(e.target.value))}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 text-xs font-semibold focus:border-emerald-500"
+              >
+                {availableVoices.map((v, i) => (
+                  <option key={i} value={i}>
+                    {v.name} ({v.lang})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Speed Rate Slider */}
+            <div className="space-y-1">
+              <div className="flex justify-between font-bold text-slate-300">
+                <span>Speech Speed / Rate:</span>
+                <span className="text-emerald-400 font-mono">{speechRate}x</span>
+              </div>
+              <input
+                type="range"
+                min="0.7"
+                max="1.5"
+                step="0.1"
+                value={speechRate}
+                onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
+                className="w-full accent-emerald-500"
+              />
+            </div>
+
+            {/* Pitch Slider */}
+            <div className="space-y-1">
+              <div className="flex justify-between font-bold text-slate-300">
+                <span>Voice Pitch:</span>
+                <span className="text-emerald-400 font-mono">{speechPitch}</span>
+              </div>
+              <input
+                type="range"
+                min="0.5"
+                max="1.5"
+                step="0.1"
+                value={speechPitch}
+                onChange={(e) => setSpeechPitch(parseFloat(e.target.value))}
+                className="w-full accent-emerald-500"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Video Presentation Stage */}
       <div className="max-w-6xl mx-auto w-full my-6 flex-1 flex flex-col justify-center">
@@ -227,7 +329,7 @@ export default function DemoVideoPage() {
               {activeScene.subtitle}
             </p>
 
-            {/* Feature Demo Mockup Display inside Scene 4 & 5 */}
+            {/* Feature Demo Mockup Display inside Scene 4 & 6 */}
             {activeScene.id === 4 && (
               <div className="mt-4 p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/40 text-xs font-mono text-emerald-300 space-y-2">
                 <div className="flex items-center gap-2">
