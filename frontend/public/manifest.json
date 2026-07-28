@@ -1,0 +1,21 @@
+{
+  "name": "MediMitra AI — Multilingual Voice Health Companion",
+  "short_name": "MediMitra AI",
+  "description": "Your AI Health Companion — Speaks Your Language, Understands Your Needs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#10B981",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

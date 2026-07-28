@@ -1,0 +1,18 @@
+[
+  {
+    "keyword": "fever",
+    "condition": "Seasonal Influenza / Viral Fever",
+    "riskLevel": "MODERATE",
+    "summary": "Elevated body temperature indicating an active viral immune response.",
+    "recommendedActions": ["Hydrate frequently", "Rest completely", "Monitor temperature"],
+    "homeRemedies": ["Ginger tea", "Warm salt gargle"]
+  },
+  {
+    "keyword": "chest pain",
+    "condition": "Cardiovascular Distress Triage",
+    "riskLevel": "CRITICAL",
+    "summary": "Acute thoracic discomfort requiring immediate clinical evaluation.",
+    "recommendedActions": ["Stop physical movement", "Call emergency SOS immediately"],
+    "homeRemedies": ["Loosen tight clothing"]
+  }
+]
