@@ -1,7 +1,31 @@
 {
-  "name": "medimitra-ai-frontend",
+  "name": "medimitra-ai",
   "version": "1.0.0",
-  "private": true,
+  "description": "AI-Powered Multilingual Healthcare Companion for Underserved Rural Communities",
+  "homepage": "https://dhanya-medimitra.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dhanya-jm024/medimitra-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dhanya-jm024/medimitra-ai/issues"
+  },
+  "author": "MediMitra AI Team <dhanya@medimitra-ai.org>",
+  "license": "MIT",
+  "keywords": [
+    "healthcare",
+    "ai",
+    "gemini-2.0",
+    "multilingual",
+    "indic-nlp",
+    "pwa",
+    "accessibility",
+    "nextjs14",
+    "codestorm2026"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

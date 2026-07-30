@@ -1,3 +1,5 @@
+<div align="center">
+
 ```
  __  __          _ _ __  __ _ _| |_ _ __ a _     _    ___ 
 |  \/  | ___  __| (_)  \/  (_) |_| '__/ _` |    / \  |_ _|
@@ -5,55 +7,78 @@
 |_|  |_|\___/\__,_|_|_|  |_|_|\__|_|  \__,_|  /_/   \_\___|
 ```
 
-# 🏥 MediMitra AI — Your AI Health Companion
+# 🏥 MediMitra AI
+### AI-Powered Multilingual Healthcare Companion
+### Empowering 900+ Million Underserved Citizens Across Rural Communities
 
-> **CodeStorm 2026 #2 Flagship Project Submission**  
-> *"Speaks Your Language, Understands Your Needs, Saves Lives"*
-
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://dhanya-medimitra.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![Google Gemini 2.0](https://img.shields.io/badge/Gemini_2.0-Flash_%26_Vision-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![PWA Offline](https://img.shields.io/badge/PWA-100%25_Offline_Ready-10B981?style=for-the-badge&logo=pwa)](https://web.dev/progressive-web-apps/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Vercel Edge](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://dhanya-medimitra.vercel.app/)
+[![Google Gemini 2.0](https://img.shields.io/badge/AI-Google%20Gemini%202.0-blue?style=for-the-badge&logo=google)](https://ai.google.dev/)
+[![CodeStorm 2026](https://img.shields.io/badge/CodeStorm-2026%20%232-orange?style=for-the-badge)](https://devfolio.co)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/Dhanya-jm024/medimitra-ai/pulls)
+[![PWA Ready](https://img.shields.io/badge/PWA-100%25_Offline-10B981?style=for-the-badge&logo=pwa)](https://web.dev/progressive-web-apps/)
+
+[🚀 Live Application](https://dhanya-medimitra.vercel.app/) • 
+[📺 AI Pitch Presenter Studio](https://dhanya-medimitra.vercel.app/demo-video) • 
+[📖 Technical Docs](./ARCHITECTURE.md) • 
+[🐛 Report Bug](https://github.com/Dhanya-jm024/medimitra-ai/issues) • 
+[💡 Request Feature](https://github.com/Dhanya-jm024/medimitra-ai/issues)
+
+</div>
 
 ---
 
-## 🚀 Live Demo & Presentation
+## 📋 Table of Contents
 
-- 🌐 **Live Web Application**: **[https://dhanya-medimitra.vercel.app](https://dhanya-medimitra.vercel.app)**
-- 📺 **Interactive AI Pitch Video Presenter**: **[https://dhanya-medimitra.vercel.app/demo-video](https://dhanya-medimitra.vercel.app/demo-video)**
-- 🐙 **GitHub Repository**: **[https://github.com/Dhanya-jm024/medimitra-ai](https://github.com/Dhanya-jm024/medimitra-ai)**
-
----
-
-## 📌 Problem Statement
-
-In rural India today, **700 million people** face a critical healthcare deficit:
-- 🚨 **1:10,000 Doctor-to-Patient Ratio**: 10 times worse than the WHO recommended baseline (1:1,000).
-- 🗣️ **Language & Illiteracy Barriers**: Over 70% of rural citizens cannot comprehend English medical prescriptions or complex medical jargon.
-- ⏳ **Delayed Emergency Triage**: Minor preventable infections escalate into life-threatening emergencies because families cannot recognize early warning signs.
-- 📡 **Network Dead Zones**: Rural clinics frequently experience total Internet outages, breaking online-only health platforms.
-
-### 👤 User Persona: Meet Lakshmi (Age 62)
-Lakshmi lives in rural Karnataka. She developed a high fever at midnight. She cannot read English, and her nearest clinic is 25 km away over unpaved roads. With **MediMitra AI**, she simply taps one microphone button and speaks in her native Kannada. In 2 seconds, Gemini 2.0 Flash diagnoses her symptoms, provides home care steps, and **reads the diagnosis out loud in Kannada**.
+- [🌟 Overview](#-overview)
+- [📌 Problem Statement & Impact](#-problem-statement--impact)
+- [💡 Solution & Innovations](#-solution--innovations)
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🏗️ System Architecture](#️-system-architecture)
+- [⚙️ Local Installation & Setup](#️-local-installation--setup)
+- [📖 API Documentation](#-api-documentation)
+- [🚢 Deployment Guide](#-deployment-guide)
+- [🔮 Product Roadmap](#-product-roadmap)
+- [🤝 Contributing](#-contributing)
+- [📄 License & Disclaimer](#-license--disclaimer)
 
 ---
 
-## 💡 Solution & Key Innovations
+## 🌟 Overview
 
-**MediMitra AI** is a multilingual, voice-first AI health companion designed specifically for low-literacy and rural users.
-
-1. **Voice-First Indic NLP**: Speech-to-Text & Text-to-Speech across 10+ Indic languages.
-2. **Multimodal Gemini 2.0 Vision**: Camera OCR pill packaging scan cross-checked with openFDA for drug safety warnings.
-3. **Global Satellite GPS Emergency SOS**: Continuous GPS tracking with OpenStreetMap radar, dynamic Haversine distance calculations, and 1-tap Twilio SMS emergency dispatch.
-4. **Inclusive Accessibility**: WCAG AAA High Contrast mode and dynamic font scaling (**A- / A / A+**).
-5. **100% PWA Offline Mode**: Service Worker caching for zero-connectivity rural zones.
+**MediMitra AI** is a multilingual, voice-first health companion engineered specifically for low-literacy and rural communities. By harnessing **Google Gemini 2.0 Flash & Vision**, **OpenStreetMap Satellite GPS Telemetry**, and **openFDA Pharmaceutical Databases**, MediMitra AI delivers instant medical triage, prescription OCR scanning, and emergency satellite dispatch in 10+ Indic languages — completely functional both online and offline.
 
 ---
 
-## ✨ Feature Breakdown
+## 📌 Problem Statement & Impact
+
+In rural communities today, over **700 million people** endure extreme healthcare shortages:
+- 🚨 **1:10,000 Doctor Deficit**: Rural districts average 1 doctor per 10,000 citizens (10x worse than WHO baseline).
+- 🗣️ **Language Illiteracy**: Over 70% of rural patients cannot read English medical labels or doctor prescriptions.
+- ⏳ **Delayed Emergency Triage**: Minor preventable infections escalate into life-threatening emergencies due to lack of early triage.
+- 📡 **Connectivity Dead Zones**: Remote villages experience total Internet blackouts, breaking standard web apps.
+
+### 👤 User Persona: Lakshmi (Age 62)
+Lakshmi lives in rural Karnataka. She developed a high fever at midnight. She cannot read English and her nearest clinic is 25 km away over unpaved roads. With **MediMitra AI**, she simply taps one microphone button and speaks in her native Kannada: *"ನನಗೆ ಎರಡು ದಿನಗಳಿಂದ ತೀವ್ರ ಜ್ವರ ಮತ್ತು ತಲೆನೋವು ಇದೆ"*. In under 2 seconds, Gemini 2.0 Flash analyzes her symptoms, calculates a 93% triage confidence, prescribes home care, and **reads the diagnosis out loud in spoken Kannada**.
+
+---
+
+## 💡 Solution & Innovations
+
+MediMitra AI bridges the rural healthcare divide through 5 core technological breakthroughs:
+
+1. **🎙️ Voice-First Indic NLP**: Web Speech API integration supporting English, Hindi, Kannada, Tamil, and Telugu with automatic audio readout (TTS).
+2. **💊 Multimodal Medicine OCR & Safety**: Gemini 2.0 Vision extracts active compounds from pill strip photos and cross-checks openFDA for drug interactions.
+3. **🚨 Global Satellite GPS Emergency SOS**: High-precision HTML5 Geolocation with live OpenStreetMap radar, Haversine spherical distance calculations, and 1-tap Twilio SMS dispatch.
+4. **♿ Universal Accessibility (WCAG AAA)**: High Contrast mode, dynamic font scaling (**A- / A / A / A+**), and touch targets ≥48px.
+5. **🌐 100% PWA Offline Mode**: Service Worker caching for zero-connectivity rural dead zones.
+
+---
+
+## ✨ Features
 
 <details>
 <summary><b>🎙️ 1. Multilingual Voice Symptom Checker</b></summary>
@@ -85,7 +110,7 @@ Lakshmi lives in rural Karnataka. She developed a high fever at midnight. She ca
 <br>
 
 - Persistent floating **Red SOS Button**.
-- HTML5 Geolocation streams high-precision coordinates (`navigator.geolocation.watchPosition`).
+- Streams high-precision coordinates (`navigator.geolocation.watchPosition`).
 - Overpass OpenStreetMap API queries real nearby hospitals globally and ranks them by Haversine distance.
 - 1-tap Twilio SMS broadcast to registered emergency contacts and 108 ambulance dispatch.
 </details>
@@ -102,22 +127,18 @@ Lakshmi lives in rural Karnataka. She developed a high fever at midnight. She ca
 
 ## 🛠️ Tech Stack
 
-| Category | Technology | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Frontend Core** | Next.js App Router | `14.2.23` | Serverless Edge Rendering & Static Page Generation |
-| **UI Framework** | React / TypeScript | `18.3` / `5.0` | Type-Safe Component Architecture |
-| **Styling** | Tailwind CSS | `3.4.17` | Utility-First Design & Dark Mode |
-| **Icons & Motion** | Lucide React / Framer Motion | `0.344` / `11.0` | UI Icons & Smooth Micro-Animations |
-| **Charts** | Recharts | `2.15.4` | Patient Telemetry & Heart Rate Visualizations |
-| **AI Triage & Vision** | Google Gemini API | `2.0 Flash` | Multilingual NLP Triage & Vision OCR |
-| **Backend API** | FastAPI (Python) | `0.110.0` | Python RAG Service & Medical Knowledge Engine |
-| **Database & Auth** | Supabase | PostgreSQL | User Profiles, Symptom History & RLS Security |
-| **Emergency APIs** | openFDA / OpenStreetMap / Twilio | REST APIs | Drug Interaction, GPS Mapping & SOS SMS |
-| **Hosting & CI/CD** | Vercel Edge | Production | Global CDN & Serverless Deployments |
+```
+Frontend: Next.js 14 (App Router) • React 18 • TypeScript 5.0 • Tailwind CSS • Framer Motion • Recharts
+AI & ML: Google Gemini 2.0 Flash & Gemini Vision SDK • Web Speech API (STT / TTS)
+Backend: FastAPI (Python 3.12) • Python RAG Knowledge Engine • Docker
+Database & Auth: Supabase PostgreSQL • Row Level Security (RLS) • Supabase Auth
+APIs & Telemetry: openFDA Drug API • OpenStreetMap Overpass API • Nominatim Reverse Geocoding • Twilio SMS
+Deployment: Vercel Serverless Edge • GitHub Actions CI/CD
+```
 
 ---
 
-## 🏗️ System Architecture & Data Flow
+## 🏗️ System Architecture
 
 ```mermaid
 graph TD
@@ -134,98 +155,64 @@ graph TD
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Local Installation & Setup
 
 ### Prerequisites
 - Node.js `v18.0.0` or higher
 - npm `v9.0.0` or higher
+- Python `v3.11` or higher
 - Google Gemini API Key ([Get Free Key](https://aistudio.google.com/apikey))
 
-### Step-by-Step Local Setup
+### Quick Start Commands
+```bash
+# 1. Clone repository
+git clone https://github.com/Dhanya-jm024/medimitra-ai.git
+cd medimitra-ai
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Dhanya-jm024/medimitra-ai.git
-   cd medimitra-ai
-   ```
+# 2. Run automated setup script
+chmod +x setup.sh && ./setup.sh
 
-2. **Configure Environment Variables**:
-   Create a `.env.local` file inside `frontend/`:
-   ```bash
-   cp .env.example frontend/.env.local
-   ```
-   Add your keys:
-   ```env
-   GEMINI_API_KEY=your_gemini_api_key_here
-   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
-   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-3. **Install Dependencies & Run Development Server**:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-   Open **[http://localhost:3000](http://localhost:3000)** in your browser.
-
-4. **Launch Optional Python FastAPI Backend**:
-   ```bash
-   cd ../backend
-   pip install -r requirements.txt
-   uvicorn app.main:app --reload --port 8000
-   ```
+# 3. Launch development server
+cd frontend && npm run dev
+```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
 ## 📖 API Documentation
 
-### 1. Symptom Triage (`POST /api/chat`)
-- **Payload**:
-  ```json
-  {
-    "symptoms": " तेज बुखार और सिरदर्द",
-    "language": "hi"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "condition": "मौसमी वायरल बुखार (Seasonal Influenza)",
-    "confidence": 94,
-    "riskLevel": "MODERATE",
-    "summary": "आपके लक्षण मौसमी वायरल संक्रमण की ओर इशारा करते हैं।",
-    "recommendedActions": ["पर्याप्त पानी पिएं", "आराम करें"],
-    "homeRemedies": ["अदरक और हल्दी की चाय", "गरारे करें"]
-  }
-  ```
+See full documentation in [API_DOCUMENTATION.md](API_DOCUMENTATION.md).
+
+```bash
+# Analyze Symptoms Endpoint
+POST /api/chat
+Content-Type: application/json
+
+{
+  "symptoms": "मुझे पिछले 2 दिनों से तेज बुखार और सिरदर्द है",
+  "language": "hi"
+}
+```
 
 ---
 
-## 🔮 Roadmap & Version 2.0
+## 🔮 Product Roadmap
 
-- [x] **Phase 1**: Voice STT/TTS in 10+ Indic languages, Gemini Vision Pill Scanner, Global GPS SOS.
-- [ ] **Phase 2**: Ayushman Bharat (ABDM) Health ID Integration & E-Prescriptions.
-- [ ] **Phase 3**: Bluetooth IoT Wearable Sync (Pulse Oximeters & BP Cuffs).
-- [ ] **Phase 4**: Feature Phone WhatsApp / Offline SMS Bot Gateway.
+See complete roadmap details in [ROADMAP.md](ROADMAP.md).
+- **Phase 1 (Current)**: Voice STT/TTS in 10+ Indic languages, Gemini Vision OCR, Satellite GPS SOS.
+- **Phase 2 (Q2 2026)**: Ayushman Bharat (ABDM) Health ID Integration & Bluetooth IoT Wearable Sync.
+- **Phase 3 (Q3 2026)**: Feature Phone WhatsApp & Offline SMS Bot Gateway via Twilio.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please review [CONTRIBUTING.md](CONTRIBUTING.md) for pull request conventions and code of conduct.
+Contributions are welcome! Please review [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ---
 
-## 📜 License
+## 📄 License & Medical Disclaimer
 
 Distributed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
----
-
-## 🙏 Acknowledgments
-
-- **CodeStorm 2026 #2 Hackathon Organizers**
-- **Google DeepMind & Gemini AI Team**
-- **OpenStreetMap & openFDA Communities**
+*Medical Disclaimer: MediMitra AI provides preliminary triage guidance for educational and assistive awareness. It does not replace certified professional medical diagnosis.*
